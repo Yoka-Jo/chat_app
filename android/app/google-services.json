@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "987395794625",
+    "project_id": "yoka-92386",
+    "storage_bucket": "yoka-92386.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987395794625:android:4c1290532bedaf2e6b5640",
+        "android_client_info": {
+          "package_name": "com.example.yoka_chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "987395794625-0atroiabmgs3gsv69uh1k8bdb1dck166.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.yoka_chat_app",
+            "certificate_hash": "ada1341a6f738137beedf70054f73a0631f9829c"
+          }
+        },
+        {
+          "client_id": "987395794625-0ie7i3ed7pjmp031l55rbpgaedprobat.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBm5ndaf2QcCVj_RirLl0iVl_WRZe6dhZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "987395794625-0ie7i3ed7pjmp031l55rbpgaedprobat.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
