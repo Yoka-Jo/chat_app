@@ -1,6 +1,51 @@
-# yoka_chat_app
+# ChatApp
+Social media application using firebase as a backend.
 
-A new Flutter project.
+# Screenshots
+<p align="center">
+  <img src='chatPics/chat1.png'height="500"/>   
+  <img src='chatPics/chat2.png'height="500"/>   
+  <img src='chatPics/chat3.png'height="500"/>   
+  <img src='chatPics/chat4.png'height="500"/>   
+  <img src='chatPics/chat5.png'height="500"/>   
+  <img src='chatPics/chat6.png'height="500"/>   
+  <img src='chatPics/chat7.png'height="500"/>   
+  <img src='chatPics/chat8.png'height="500"/>   
+  <img src='chatPics/chat9.png'height="500"/>   
+  <img src='chatPics/chat10.png'height="500"/>   
+  <img src='chatPics/chat11.png'height="500"/>   
+  <img src='chatPics/chat12.png'height="500"/>   
+  <img src='chatPics/chat13.png'height="500"/>   
+  <img src='chatPics/chat14.png'height="500"/>   
+  <img src='chatPics/chat15.png'height="500"/>   
+  <img src='chatPics/chat16.png'height="500"/>   
+  <img src='chatPics/chat17.png'height="500"/>   
+  <img src='chatPics/chat18.png'height="500"/>   
+  <img src='chatPics/chat19.png'height="500"/>   
+  <img src='chatPics/chat20.png'height="500"/>   
+  <img src='chatPics/chat21.png'height="500"/>   
+  <img src='chatPics/chat22.png'height="500"/>   
+  <img src='chatPics/chat23.png'height="500"/>
+  <img src='chatPics/chat24.png'height="500"/>   
+</p>
+
+# Features
+- Full authentication with firebase containing (Sign in, Sign up, logout).
+- Save the user data when sign up or log in for the first time to keep logged in using Shared-Preferences.
+- Back end validation and error handling incase of wrong inputs or technical issue.
+- User can update his name ,bio ,phoneNumber ,coverImage ,userImage.
+- Searching for users by username.
+- Real-time messages.
+- User can explore other user's profile and it shows his posts and his information.
+- Knowing the state of the users whether offline or online.
+- User can add posts with images and tags and can delete them later.
+- User can react with posts by press like button.
+- User can add comments and delete them.
+- messages can be text or images.
+- User can delete his messages for him or for everyOne.
+- User can call his friends.
+- User can view images in its full screen.
+- Bloc as statemanagement.
 
 ## Getting Started
 
