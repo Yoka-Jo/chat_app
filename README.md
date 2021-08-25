@@ -3,7 +3,7 @@ Social media application using firebase as a backend.
 
 # Screenshots
 <p align="center">
-  <img src='chatPics/chat1.png'height="500"/>   
+  <img src='chatPics/chat1.png'width="41.9%"/>   
   <img src='chatPics/chat2.png'height="500"/>   
   <img src='chatPics/chat3.png'height="500"/>   
   <img src='chatPics/chat4.png'height="500"/>   
