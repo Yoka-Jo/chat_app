@@ -3,30 +3,30 @@ Social media application using firebase as a backend.
 
 # Screenshots
 <p align="center">
-  <img src='chatPics/chat1.png'width="41.9%"/>   
-  <img src='chatPics/chat2.png'height="500"/>   
-  <img src='chatPics/chat3.png'height="500"/>   
-  <img src='chatPics/chat4.png'height="500"/>   
-  <img src='chatPics/chat5.png'height="500"/>   
-  <img src='chatPics/chat6.png'height="500"/>   
-  <img src='chatPics/chat7.png'height="500"/>   
-  <img src='chatPics/chat8.png'height="500"/>   
-  <img src='chatPics/chat9.png'height="500"/>   
-  <img src='chatPics/chat10.png'height="500"/>   
-  <img src='chatPics/chat11.png'height="500"/>   
-  <img src='chatPics/chat12.png'height="500"/>   
-  <img src='chatPics/chat13.png'height="500"/>   
-  <img src='chatPics/chat14.png'height="500"/>   
-  <img src='chatPics/chat15.png'height="500"/>   
-  <img src='chatPics/chat16.png'height="500"/>   
-  <img src='chatPics/chat17.png'height="500"/>   
-  <img src='chatPics/chat18.png'height="500"/>   
-  <img src='chatPics/chat19.png'height="500"/>   
-  <img src='chatPics/chat20.png'height="500"/>   
-  <img src='chatPics/chat21.png'height="500"/>   
-  <img src='chatPics/chat22.png'height="500"/>   
-  <img src='chatPics/chat23.png'height="500"/>
-  <img src='chatPics/chat24.png'height="500"/>   
+  <img src='chatPics/chat1.png'width="42%"/>   
+  <img src='chatPics/chat2.png'width="42%"/>   
+  <img src='chatPics/chat3.png'width="42%"/>   
+  <img src='chatPics/chat4.png'width="42%"/>   
+  <img src='chatPics/chat5.png'width="42%"/>   
+  <img src='chatPics/chat6.png'width="42%"/>   
+  <img src='chatPics/chat7.png'width="42%"/>   
+  <img src='chatPics/chat8.png'width="42%"/>   
+  <img src='chatPics/chat9.png'width="42%"/>   
+  <img src='chatPics/chat10.png'width="42%"/>   
+  <img src='chatPics/chat11.png'width="42%"/>   
+  <img src='chatPics/chat12.png'width="42%"/>   
+  <img src='chatPics/chat13.png'width="42%"/>   
+  <img src='chatPics/chat14.png'width="42%"/>   
+  <img src='chatPics/chat15.png'width="42%"/>   
+  <img src='chatPics/chat16.png'width="42%"/>   
+  <img src='chatPics/chat17.png'width="42%"/>   
+  <img src='chatPics/chat18.png'width="42%"/>   
+  <img src='chatPics/chat19.png'width="42%"/>   
+  <img src='chatPics/chat20.png'width="42%"/>   
+  <img src='chatPics/chat21.png'width="42%"/>   
+  <img src='chatPics/chat22.png'width="42%"/>   
+  <img src='chatPics/chat23.png'width="42%"/>
+  <img src='chatPics/chat24.png'width="42%"/>   
 </p>
 
 # Features
