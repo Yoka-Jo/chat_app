@@ -5,12 +5,35 @@ import 'package:yoka_chat_app/layout/cubit/states.dart';
 import 'package:yoka_chat_app/shared/components/components.dart';
 import 'package:yoka_chat_app/shared/styles/icon_broken.dart';
 
-class EditProfileScreen extends StatelessWidget {
-  EditProfileScreen({Key? key}) : super(key: key);
+class EditProfileScreen extends StatefulWidget {
+  const EditProfileScreen({Key? key}) : super(key: key);
 
-  var nameEditingController = TextEditingController();
-  var bioEditingController = TextEditingController();
-  var phoneEditingController = TextEditingController();
+  @override
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
+}
+
+class _EditProfileScreenState extends State<EditProfileScreen> {
+  late TextEditingController nameEditingController;
+
+  late TextEditingController bioEditingController;
+
+  late TextEditingController phoneEditingController;
+
+      @override
+  void initState() {
+    super.initState();
+    nameEditingController = TextEditingController();
+    bioEditingController = TextEditingController();
+    phoneEditingController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    nameEditingController.dispose();
+    bioEditingController.dispose();
+    phoneEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

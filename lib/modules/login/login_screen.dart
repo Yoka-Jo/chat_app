@@ -9,14 +9,33 @@ import 'package:yoka_chat_app/shared/components/components.dart';
 import 'package:yoka_chat_app/shared/components/constants.dart';
 import 'package:yoka_chat_app/shared/network/local/cache_helper.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   var formKey = GlobalKey<FormState>();
 
-  var emailController = TextEditingController();
+  late TextEditingController emailController;
 
-  var passwordController = TextEditingController();
+  late TextEditingController passwordController;
+
+  @override
+  void initState() {
+    super.initState();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

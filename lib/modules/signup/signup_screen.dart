@@ -9,12 +9,39 @@ import 'package:yoka_chat_app/shared/components/components.dart';
 import 'package:yoka_chat_app/shared/components/constants.dart';
 import 'package:yoka_chat_app/shared/network/local/cache_helper.dart';
 
-class SignupScreen extends StatelessWidget {
+class SignupScreen extends StatefulWidget {
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
   var formKey = GlobalKey<FormState>();
-  var nameController = TextEditingController();
-  var phoneController = TextEditingController();
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
+
+  late TextEditingController nameController;
+
+  late TextEditingController phoneController;
+
+  late TextEditingController emailController;
+
+  late TextEditingController passwordController;
+
+    @override
+  void initState() {
+    super.initState();
+    nameController = TextEditingController();
+    phoneController = TextEditingController();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    phoneController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

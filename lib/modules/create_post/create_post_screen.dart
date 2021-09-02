@@ -6,10 +6,32 @@ import 'package:yoka_chat_app/layout/cubit/states.dart';
 import 'package:yoka_chat_app/shared/components/components.dart';
 import 'package:yoka_chat_app/shared/styles/icon_broken.dart';
 
-class CreatePostScreen extends StatelessWidget {
-  var textController = TextEditingController();
-  var hashTagController = TextEditingController();
+class CreatePostScreen extends StatefulWidget {
+  @override
+  State<CreatePostScreen> createState() => _CreatePostScreenState();
+}
+
+class _CreatePostScreenState extends State<CreatePostScreen> {
+  late TextEditingController postTextController;
+
+  late TextEditingController hashTagController;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+    @override
+  void initState() {
+    super.initState();
+    postTextController = TextEditingController();
+    hashTagController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    postTextController.dispose();
+    hashTagController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SocialCubit, SocialStates>(
@@ -39,15 +61,15 @@ class CreatePostScreen extends StatelessWidget {
                   TextButton(
                     onPressed: () {
                       if (cubit.postImage == null &&
-                          textController.text.isNotEmpty) {
+                          postTextController.text.isNotEmpty) {
                         SocialCubit.get(context).createPost(
                             dateTime: DateTime.now().toString(),
-                            text: textController.text);
+                            text: postTextController.text);
                         Navigator.of(context).pop();
                       } else if (cubit.postImage != null) {
                         SocialCubit.get(context).uploadImageThenPost(
                           dateTime: DateTime.now().toString(),
-                          text: textController.text,
+                          text: postTextController.text,
                         );
                         Navigator.of(context).pop();
                       } else {
@@ -102,7 +124,7 @@ class CreatePostScreen extends StatelessWidget {
                       child: TextFormField(
                         minLines: null,
                         maxLines: null,
-                        controller: textController,
+                        controller: postTextController,
                         decoration: InputDecoration(
                           hintText: 'what is on your mind, ' +
                               userModel.name.toString() +

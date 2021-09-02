@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
         listener: (context, state) {
           if (state is SocialGetUserErrorState) {
              ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            defaultSnackBar(context, text: "Please check your internet.");
+            defaultSnackBar(context, text: state.error);
           }
         },
         builder: (context, state) {
