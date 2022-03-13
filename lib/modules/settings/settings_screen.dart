@@ -24,9 +24,8 @@ class SettingsScreen extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             child: Column(
               children: [
-                userImages(userModel! , context),
-                Text(
-                  userModel.name.toString(),
+                userImages(userModel!, context),
+                Text(userModel.name.toString(),
                     style: const TextStyle(
                         fontSize: 18.0, fontWeight: FontWeight.w600)),
                 Text(userModel.bio.toString(),
@@ -58,23 +57,24 @@ class SettingsScreen extends StatelessWidget {
                       ),
                       Builder(builder: (context) {
                         List<PostModel>? posts = [];
-                        if(SocialCubit.get(context)
-                            .posts == null){
-                              posts = [];
-                            }
-                            else{
-                         posts = SocialCubit.get(context)
-                            .posts;
-                            }
-                        return posts!.where((element) => element.uId == userModel.uId).isNotEmpty
+                        if (SocialCubit.get(context).posts == null) {
+                          posts = [];
+                        } else {
+                          posts = SocialCubit.get(context).posts;
+                        }
+                        return posts!
+                                .where(
+                                    (element) => element.uId == userModel.uId)
+                                .isNotEmpty
                             ? ListView.builder(
                                 shrinkWrap: true,
                                 physics: const BouncingScrollPhysics(),
                                 itemBuilder: (context, i) {
-                                  if(posts![i].uId == uId){
-                                   return defaultPost(SocialCubit.get(context), i , id: userModel.uId);
-                                  }
-                                  else{
+                                  if (posts![i].uId == uId) {
+                                    return defaultPost(
+                                        SocialCubit.get(context), i,
+                                        id: userModel.uId);
+                                  } else {
                                     return Container();
                                   }
                                 },
@@ -110,7 +110,7 @@ class SettingsScreen extends StatelessWidget {
           context, String text, IconData icon, UserModel userModel) =>
       InkWell(
         onTap: () {
-          navigateTo(context, EditProfileScreen());
+          navigateTo(context, const EditProfileScreen());
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -142,5 +142,4 @@ class SettingsScreen extends StatelessWidget {
           ],
         ),
       );
-
 }

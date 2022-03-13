@@ -41,62 +41,77 @@ class _UsersScreenState extends State<UsersScreen> with WidgetsBindingObserver {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
-
     return BlocConsumer<SocialCubit, SocialStates>(
       listener: (context, state) {},
       builder: (context, state) {
-        List<UserModel>? users = SocialCubit.get(context).users!.where((element) => element.uId != uId).toList();
-        return users  != null
-            ? Column(
-              children: [
-                const SizedBox(height: 20.0),
-               Padding(
-                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                 child: TextField(
-                    onChanged: (value) {
-                      SocialCubit.get(context).searchForAUser(value);
-                    },
-                    decoration: InputDecoration(
-                        fillColor: Colors.grey[300],
-                        filled: true,
-                        enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.grey[100]!, width: 1)),
-                        hintText: 'Search',
-                        hintStyle: TextStyle(
-                          color: Colors.grey[600],
+        List<UserModel>? users = SocialCubit.get(context)
+            .users
+            ?.where((element) => element.uId != uId)
+            .toList();
+        return users != null
+            ? InkWell(
+                onTap: () {
+                  FocusScope.of(context).unfocus();
+                },
+                child: Column(
+                  children: [
+                    const SizedBox(height: 20.0),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: TextField(
+                        onChanged: (value) {
+                          SocialCubit.get(context).searchForAUser(value);
+                        },
+                        decoration: InputDecoration(
+                          fillColor: Colors.grey[300],
+                          filled: true,
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.grey[100]!, width: 1)),
+                          hintText: 'Search',
+                          hintStyle: TextStyle(
+                            color: Colors.grey[600],
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Colors.red.shade900, width: 1)),
                         ),
-                        focusedBorder:  OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.red.shade900, width: 1)),
-                  ),
-                             ),
-               ),
-                const SizedBox(height: 30.0),
-                Expanded(
-                  child: RefreshIndicator(
-                    color: Colors.red.shade900,
-                    onRefresh: ()async{
-                      SocialCubit.get(context).getUsers();
-                    },
-                    child: ListView.separated(
-                        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                        itemBuilder: (context, index) => buildUserItem(
-                          SocialCubit.get(context).filteredUsers.isEmpty ?users[index] : SocialCubit.get(context).filteredUsers[index]
-                          , context),
-                        separatorBuilder: (context, index) => Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                          child: myDivider(),
-                        ),
-                        itemCount: SocialCubit.get(context).filteredUsers.isEmpty ?users.length: SocialCubit.get(context).filteredUsers.length,
                       ),
-                  ),
+                    ),
+                    const SizedBox(height: 30.0),
+                    Expanded(
+                      child: RefreshIndicator(
+                        color: Colors.red.shade900,
+                        onRefresh: () async {
+                          SocialCubit.get(context).getUsers();
+                        },
+                        child: ListView.separated(
+                          physics: const BouncingScrollPhysics(
+                              parent: AlwaysScrollableScrollPhysics()),
+                          itemBuilder: (context, index) => buildUserItem(
+                              SocialCubit.get(context).filteredUsers.isEmpty
+                                  ? users[index]
+                                  : SocialCubit.get(context)
+                                      .filteredUsers[index],
+                              context),
+                          separatorBuilder: (context, index) => Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 20.0),
+                            child: myDivider(),
+                          ),
+                          itemCount: SocialCubit.get(context)
+                                  .filteredUsers
+                                  .isEmpty
+                              ? users.length
+                              : SocialCubit.get(context).filteredUsers.length,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ],
-            )
+              )
             : const Center(child: CircularProgressIndicator());
       },
     );
@@ -129,7 +144,8 @@ class _UsersScreenState extends State<UsersScreen> with WidgetsBindingObserver {
                           children: [
                             CircleAvatar(
                               radius: 30.0,
-                              backgroundImage: NetworkImage(model.image.toString()),
+                              backgroundImage:
+                                  NetworkImage(model.image.toString()),
                             ),
                             const SizedBox(
                               width: 10.0,

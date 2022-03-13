@@ -9,7 +9,7 @@ class CommentsScreen extends StatefulWidget {
   final PostModel? post;
   final int? index;
 
-  CommentsScreen({Key? key, this.post , this.index}) : super(key: key);
+  const CommentsScreen({Key? key, this.post, this.index}) : super(key: key);
 
   @override
   State<CommentsScreen> createState() => _CommentsScreenState();
@@ -18,7 +18,7 @@ class CommentsScreen extends StatefulWidget {
 class _CommentsScreenState extends State<CommentsScreen> {
   late TextEditingController commentController;
 
-    @override
+  @override
   void initState() {
     super.initState();
     commentController = TextEditingController();
@@ -44,10 +44,10 @@ class _CommentsScreenState extends State<CommentsScreen> {
                   key: Key(widget.post!.postId.toString()),
                   onDismissed: (_) => Navigator.of(context).pop(),
                   child: defaultComments(commentController, () {
-                    SocialCubit.get(context)
-                        .sendComment(widget.post!.postId!, commentController.text);
+                    SocialCubit.get(context).sendComment(
+                        widget.post!.postId!, commentController.text);
                     commentController.clear();
-                  }, SocialCubit.get(context) , widget.post! , widget.index!)),
+                  }, SocialCubit.get(context), widget.post!, widget.index!)),
             ),
           );
         },

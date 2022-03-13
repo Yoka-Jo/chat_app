@@ -50,9 +50,12 @@ class SocialCubit extends Cubit<SocialStates> {
 //search in users
   List<UserModel> filteredUsers = [];
   void searchForAUser(String section) {
-    filteredUsers = users!
-        .where((element) => element.name!.toLowerCase().contains(section))
-        .toList();
+    filteredUsers = users!.where((element) {
+      if (element.uId == userModel!.uId) {
+        return false;
+      }
+      return element.name!.toLowerCase().contains(section);
+    }).toList();
     emit(SocialGetAllFilteredUsersSuccessState());
   }
 
@@ -246,7 +249,6 @@ class SocialCubit extends Cubit<SocialStates> {
             .child("posts/${backupPost!.postImageName}")
             .delete()
             .then((value) {
-
           emit(SocialDeletePostSuccessState());
           return;
         }).catchError((error) {

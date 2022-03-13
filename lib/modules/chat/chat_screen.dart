@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:yoka_chat_app/layout/cubit/cubit.dart';
@@ -120,7 +119,7 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
           if (snapshot.hasData) {
             final messages = snapshot.data!.docs;
             return GestureDetector(
-              onTap: (){
+              onTap: () {
                 FocusScope.of(context).unfocus();
               },
               child: Scaffold(
@@ -152,27 +151,31 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                     onPressed: () {
                                                       SocialCubit.get(context)
                                                           .deleteMessage(
-                                                              widget
-                                                                  .friendData!.uId
+                                                              widget.friendData!
+                                                                  .uId
                                                                   .toString(),
-                                                              messages[i]["time"]
+                                                              messages[i]
+                                                                      ["time"]
                                                                   .toString(),
                                                               false);
-                                                      Navigator.of(context).pop();
+                                                      Navigator.of(context)
+                                                          .pop();
                                                     },
                                                     child: const Text("Me")),
                                                 TextButton(
                                                     onPressed: () {
                                                       SocialCubit.get(context)
                                                           .deleteMessage(
-                                                              widget
-                                                                  .friendData!.uId
+                                                              widget.friendData!
+                                                                  .uId
                                                                   .toString(),
-                                                              messages[i]["time"]
+                                                              messages[i]
+                                                                      ["time"]
                                                                   .toString(),
                                                               true);
-                
-                                                      Navigator.of(context).pop();
+
+                                                      Navigator.of(context)
+                                                          .pop();
                                                     },
                                                     child:
                                                         const Text("EveryOne")),
@@ -182,11 +185,11 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                   return;
                                 },
                                 child: Container(
-                                  padding:
-                                      !messages[i]["message"]!.startsWith("https")
-                                          ? const EdgeInsets.symmetric(
-                                              horizontal: 10.0, vertical: 8.0)
-                                          : EdgeInsets.zero,
+                                  padding: !messages[i]["message"]!
+                                          .startsWith("https")
+                                      ? const EdgeInsets.symmetric(
+                                          horizontal: 10.0, vertical: 8.0)
+                                      : EdgeInsets.zero,
                                   decoration: BoxDecoration(
                                       color: messages[i]["message"]!
                                               .startsWith("https:")
@@ -201,10 +204,10 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                                   ? const Radius.circular(0.0)
                                                   : const Radius.circular(10.0),
                                           topLeft: const Radius.circular(10.0),
-                                          bottomLeft:
-                                              messages[i]["senderId"] == uId
-                                                  ? const Radius.circular(10.0)
-                                                  : const Radius.circular(0.0))),
+                                          bottomLeft: messages[i]["senderId"] ==
+                                                  uId
+                                              ? const Radius.circular(10.0)
+                                              : const Radius.circular(0.0))),
                                   child: (!messages[i]["message"]!
                                           .startsWith("https:")
                                       ? Text(
@@ -247,7 +250,8 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                if (SocialCubit.get(context).imageForChat != null)
+                                if (SocialCubit.get(context).imageForChat !=
+                                    null)
                                   Stack(
                                       fit: StackFit.passthrough,
                                       clipBehavior: Clip.none,
@@ -337,7 +341,6 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                                               onTap: () {
                                                 moveToTheEndOfTheList();
                                                 sendMessageLogic(context);
-            
                                               },
                                               child: const Icon(
                                                 IconBroken.Send,
@@ -382,17 +385,17 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
 
   bool sendMessageOnly(BuildContext context) {
     return SocialCubit.get(context).imageForChat == null &&
-      messageController.text.isNotEmpty;
+        messageController.text.isNotEmpty;
   }
 
   bool sendBothImageAndMessage(BuildContext context) {
     return (SocialCubit.get(context).imageForChat != null &&
-      messageController.text.isNotEmpty);
+        messageController.text.isNotEmpty);
   }
 
   bool sendImageOnly(BuildContext context) {
     return SocialCubit.get(context).imageForChat != null &&
-      messageController.text.isEmpty;
+        messageController.text.isEmpty;
   }
 
   void sendMessage(BuildContext context) {
@@ -441,9 +444,9 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                 Text(
                   widget.friendData!.name.toString(),
                   style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    height: 1.4,
-                  ),
+                      fontWeight: FontWeight.bold,
+                      height: 1.4,
+                      color: Colors.black),
                 ),
                 StreamBuilder<DocumentSnapshot>(
                     stream: FirebaseFirestore.instance
@@ -464,9 +467,15 @@ class _ChatScreenState extends State<ChatScreen> with WidgetsBindingObserver {
                             const SizedBox(
                               width: 5.0,
                             ),
-                            Text(snapshot.data!.get("status") == "Online"
-                                ? "Online"
-                                : "Offline")
+                            Text(
+                              snapshot.data!.get("status") == "Online"
+                                  ? "Online"
+                                  : "Offline",
+                              style: const TextStyle(
+                                color: Colors.black54,
+                                fontSize: 14,
+                              ),
+                            )
                           ],
                         );
                       } else {

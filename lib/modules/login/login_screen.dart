@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yoka_chat_app/layout/cubit/cubit.dart';
 import 'package:yoka_chat_app/layout/social_layout.dart';
 import 'package:yoka_chat_app/modules/login/cubit/cubit.dart';
 import 'package:yoka_chat_app/modules/login/cubit/states.dart';
@@ -10,7 +9,7 @@ import 'package:yoka_chat_app/shared/components/constants.dart';
 import 'package:yoka_chat_app/shared/network/local/cache_helper.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -123,7 +122,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               }
                               return;
                             })
-                        :  Center(child: CircularProgressIndicator(color: Colors.red.shade900,)),
+                        : Center(
+                            child: CircularProgressIndicator(
+                            color: Colors.red.shade900,
+                          )),
                     const SizedBox(
                       height: 20.0,
                     ),
@@ -142,7 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         InkWell(
                           onTap: () {
-                            navigateTo(context, SignupScreen());
+                            navigateTo(context, const SignupScreen());
                           },
                           child: const Text("Sign up",
                               style: TextStyle(

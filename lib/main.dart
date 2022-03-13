@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -29,9 +28,6 @@ void main() async {
   ));
 }
 
-
-
-
 class MyApp extends StatelessWidget {
   final Widget? startWidget;
   const MyApp({Key? key, this.startWidget}) : super(key: key);
@@ -39,12 +35,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers:[ 
-        BlocProvider(create: (context)=>LoginCubit()),
-        BlocProvider(create: (context) => SocialCubit()
-
-      ),
-
+      providers: [
+        BlocProvider(create: (context) => LoginCubit()),
+        BlocProvider(create: (context) => SocialCubit()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

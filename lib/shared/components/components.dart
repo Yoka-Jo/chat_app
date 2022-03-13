@@ -23,23 +23,25 @@ class DefaultTextFormField extends StatelessWidget {
   final bool isHintSettings;
   final TextEditingController? textEditingController;
   final TextInputType? textInputType;
+  final double? textOpacity;
 
-  const DefaultTextFormField({
-    Key? key,
-    this.validator,
-    this.isHintSettings = false,
-    this.isTransparent = false,
-    this.formborderThickness = 2,
-    this.formCurves = 25.0,
-    this.prefixIcon,
-    this.onSaved,
-    this.hintText,
-    this.suffixIcon,
-    this.isEnabled = true,
-    this.isObscured,
-    this.textEditingController,
-    this.textInputType,
-  }) : super(key: key);
+  const DefaultTextFormField(
+      {Key? key,
+      this.validator,
+      this.isHintSettings = false,
+      this.isTransparent = false,
+      this.formborderThickness = 2,
+      this.formCurves = 25.0,
+      this.prefixIcon,
+      this.onSaved,
+      this.hintText,
+      this.suffixIcon,
+      this.isEnabled = true,
+      this.isObscured,
+      this.textEditingController,
+      this.textInputType,
+      this.textOpacity})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +74,9 @@ class DefaultTextFormField extends StatelessWidget {
           prefixIcon: coloredIcon(prefixIcon),
           hintText: hintText,
           hintStyle: TextStyle(
-              color: !isHintSettings ? Colors.grey : Colors.black,
+              color: !isHintSettings
+                  ? Colors.grey
+                  : Colors.black.withOpacity(textOpacity ?? 1),
               fontSize: 15.0,
               fontWeight: isHintSettings ? FontWeight.bold : null),
           enabledBorder: OutlineInputBorder(
@@ -277,7 +281,10 @@ Widget coloredIcon(dynamic icon) => ShaderMask(
 
 dynamic defaultSnackBar(context, {String? text}) =>
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(text ?? "" , textAlign: TextAlign.center,),
+      content: Text(
+        text ?? "",
+        textAlign: TextAlign.center,
+      ),
       backgroundColor: Colors.red.shade800,
     ));
 
@@ -321,8 +328,7 @@ Widget defaultPost(SocialCubit cubit, int i,
                         children: [
                           InkWell(
                             onTap: () {
-                              if (user.uId !=
-                                  uId) {
+                              if (user.uId != uId) {
                                 navigateTo(
                                     context,
                                     UsersProfileScreen(
@@ -332,8 +338,7 @@ Widget defaultPost(SocialCubit cubit, int i,
                               return;
                             },
                             child: circleImage(
-                                image: user.image
-                                    .toString(),
+                                image: user.image.toString(),
                                 radius: 25.0,
                                 isStatus: false),
                           ),
@@ -344,9 +349,7 @@ Widget defaultPost(SocialCubit cubit, int i,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(children: [
-                                Text(
-                                    user.name
-                                        .toString(),
+                                Text(user.name.toString(),
                                     style: const TextStyle(
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.w700,
@@ -402,7 +405,9 @@ Widget defaultPost(SocialCubit cubit, int i,
                         ],
                       ),
                       if (posts[i].postImage == null)
-                      const SizedBox(height: 15.0,),
+                        const SizedBox(
+                          height: 15.0,
+                        ),
                       Text(
                         posts[i].text.toString(),
                         style: const TextStyle(
@@ -446,7 +451,7 @@ Widget defaultPost(SocialCubit cubit, int i,
                               children: posts[i]
                                   .tags!
                                   .map((hashTag) => Text("#" + hashTag,
-                                      style:const TextStyle(
+                                      style: const TextStyle(
                                           color: Colors.blue,
                                           fontWeight: ui.FontWeight.bold)))
                                   .toList()),
@@ -540,7 +545,7 @@ Widget defaultComments(TextEditingController commentController,
           .where((element) => element.postId == post.postId)
           .toList();
       return SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Container(
           height: 551.0,
           margin: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
@@ -606,7 +611,7 @@ Widget defaultComments(TextEditingController commentController,
                           onPressed: () {
                             cubit.likePost(post.postId.toString());
                           },
-                          icon: Icon(IconBroken.Heart),
+                          icon: const Icon(IconBroken.Heart),
                           color: cubit.postsILiked!
                                   .contains(post.postId.toString())
                               ? Colors.red
@@ -628,8 +633,9 @@ Widget defaultComments(TextEditingController commentController,
                                       showDialog(
                                           context: context,
                                           builder: (context) => AlertDialog(
-                                                title: Text("Are you sure?"),
-                                                content: Text(
+                                                title:
+                                                    const Text("Are you sure?"),
+                                                content: const Text(
                                                     "you are about to delete this comment"),
                                                 actions: [
                                                   TextButton(
@@ -637,7 +643,7 @@ Widget defaultComments(TextEditingController commentController,
                                                         Navigator.of(context)
                                                             .pop();
                                                       },
-                                                      child: Text("No")),
+                                                      child: const Text("No")),
                                                   TextButton(
                                                       onPressed: () {
                                                         cubit.deleteComment(
@@ -649,7 +655,7 @@ Widget defaultComments(TextEditingController commentController,
                                                         Navigator.of(context)
                                                             .pop();
                                                       },
-                                                      child: Text("Ok")),
+                                                      child: const Text("Ok")),
                                                 ],
                                               ));
                                     }
@@ -738,7 +744,7 @@ Widget defaultComments(TextEditingController commentController,
                         bottomLeft: Radius.circular(20.0),
                         bottomRight: Radius.circular(20.0))),
                 child: Container(
-                    margin: EdgeInsets.only(top: 1.0),
+                    margin: const EdgeInsets.only(top: 1.0),
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.only(

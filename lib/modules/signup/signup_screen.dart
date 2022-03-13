@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:yoka_chat_app/layout/cubit/cubit.dart';
 import 'package:yoka_chat_app/layout/social_layout.dart';
 import 'package:yoka_chat_app/modules/login/login_screen.dart';
 import 'package:yoka_chat_app/modules/signup/cubit/cubit.dart';
@@ -10,6 +9,8 @@ import 'package:yoka_chat_app/shared/components/constants.dart';
 import 'package:yoka_chat_app/shared/network/local/cache_helper.dart';
 
 class SignupScreen extends StatefulWidget {
+  const SignupScreen({Key? key}) : super(key: key);
+
   @override
   State<SignupScreen> createState() => _SignupScreenState();
 }
@@ -25,7 +26,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   late TextEditingController passwordController;
 
-    @override
+  @override
   void initState() {
     super.initState();
     nameController = TextEditingController();
@@ -163,7 +164,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                             InkWell(
                               onTap: () {
-                                navigateTo(context, LoginScreen());
+                                navigateTo(context, const LoginScreen());
                               },
                               child: const Text("Log in",
                                   style: TextStyle(

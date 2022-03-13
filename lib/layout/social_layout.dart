@@ -18,17 +18,15 @@ class SocialScreen extends StatefulWidget {
 }
 
 class _SocialScreenState extends State<SocialScreen> {
-
-    @override
+  @override
   void initState() {
     super.initState();
     Future.delayed(Duration.zero).then((value) => SocialCubit.get(context)
-        ..getUser()
-        ..getPosts()
-        ..getUsers());
-    
+      ..getUser()
+      ..getPosts()
+      ..getUsers());
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -62,12 +60,13 @@ class _SocialScreenState extends State<SocialScreen> {
                                       LoginCubit.get(context)
                                           .signOut()
                                           .then((value) {
-                                        Cachehelper.deleteData(key: "uId").then((value) {
-                                           SocialCubit.get(context).navIndex = 0;
-                                           uId = null;
-                                        navigateTo(context, LoginScreen());
+                                        Cachehelper.deleteData(key: "uId")
+                                            .then((value) {
+                                          SocialCubit.get(context).navIndex = 0;
+                                          uId = null;
+                                          navigateTo(
+                                              context, const LoginScreen());
                                         });
-                                       
                                       });
                                     },
                                     padding: EdgeInsets.zero,
@@ -100,12 +99,12 @@ class _SocialScreenState extends State<SocialScreen> {
                           width: 10.0,
                         )
                       ]
-                    :  [],
+                    : [],
                 elevation: 0.0,
                 backgroundColor: Colors.transparent,
                 title: coloredIcon(
                   Text(cubit.titles[cubit.navIndex],
-                      style:const TextStyle(
+                      style: const TextStyle(
                           fontSize: 28.0, fontWeight: FontWeight.w700)),
                 ),
               ),

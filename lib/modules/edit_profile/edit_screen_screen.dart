@@ -19,7 +19,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
 
   late TextEditingController phoneEditingController;
 
-      @override
+  @override
   void initState() {
     super.initState();
     nameEditingController = TextEditingController();
@@ -173,6 +173,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     DefaultTextFormField(
                         textEditingController: nameEditingController,
                         hintText: userModel.name.toString(),
+                        textOpacity: 0.5,
                         formCurves: 0.0,
                         isHintSettings: true,
                         formborderThickness: 0.0,
@@ -189,6 +190,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         hintText: userModel.bio.toString().isEmpty
                             ? "type here your bio"
                             : userModel.bio.toString(),
+                        textOpacity: 0.5,
                         formCurves: 0.0,
                         isHintSettings:
                             userModel.bio.toString().isEmpty ? false : true,
@@ -204,6 +206,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     DefaultTextFormField(
                         textEditingController: phoneEditingController,
                         hintText: userModel.phone.toString(),
+                        textOpacity: 0.5,
                         isHintSettings: true,
                         formCurves: 0.0,
                         formborderThickness: 0.0,
@@ -239,16 +242,20 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         actions: [
           TextButton(
             onPressed: () {
-              if(nameEditingController.text.isNotEmpty||bioEditingController.text.isNotEmpty||phoneEditingController.text.isNotEmpty||cubit.coverImage != null ||cubit.profileImage != null ){
-              
-              cubit.updateUserAndImage(
-                  name: nameEditingController.text,
-                  bio: bioEditingController.text,
-                  phone: phoneEditingController.text).then((value) {
-                    Navigator.of(context).pop();
-                  });
-              }
-              else{
+              if (nameEditingController.text.isNotEmpty ||
+                  bioEditingController.text.isNotEmpty ||
+                  phoneEditingController.text.isNotEmpty ||
+                  cubit.coverImage != null ||
+                  cubit.profileImage != null) {
+                cubit
+                    .updateUserAndImage(
+                        name: nameEditingController.text,
+                        bio: bioEditingController.text,
+                        phone: phoneEditingController.text)
+                    .then((value) {
+                  Navigator.of(context).pop();
+                });
+              } else {
                 return;
               }
             },

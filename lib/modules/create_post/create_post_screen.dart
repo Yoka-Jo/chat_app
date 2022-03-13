@@ -7,6 +7,8 @@ import 'package:yoka_chat_app/shared/components/components.dart';
 import 'package:yoka_chat_app/shared/styles/icon_broken.dart';
 
 class CreatePostScreen extends StatefulWidget {
+  const CreatePostScreen({Key? key}) : super(key: key);
+
   @override
   State<CreatePostScreen> createState() => _CreatePostScreenState();
 }
@@ -18,7 +20,7 @@ class _CreatePostScreenState extends State<CreatePostScreen> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-    @override
+  @override
   void initState() {
     super.initState();
     postTextController = TextEditingController();

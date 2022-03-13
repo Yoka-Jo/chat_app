@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,8 +8,8 @@ class LoginCubit extends Cubit<LoginStates> {
 
   static LoginCubit get(context) => BlocProvider.of(context);
 
-  void logIn(context , {required String email, required String password}) {
-emit(LoginLoadingState());
+  void logIn(context, {required String email, required String password}) {
+    emit(LoginLoadingState());
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password)
         .then((userData) {
@@ -19,7 +18,6 @@ emit(LoginLoadingState());
       emit(LoginErrorState(error.toString()));
     });
   }
-
 
   IconData suffix = Icons.visibility_off_outlined;
   bool isPassword = true;

@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
       child: BlocConsumer<SocialCubit, SocialStates>(
         listener: (context, state) {
           if (state is SocialGetUserErrorState) {
-             ScaffoldMessenger.of(context).hideCurrentSnackBar();
+            ScaffoldMessenger.of(context).hideCurrentSnackBar();
             defaultSnackBar(context, text: state.error);
           }
         },
@@ -29,7 +29,8 @@ class HomeScreen extends StatelessWidget {
           return Scaffold(
             body: (cubit.userModel != null)
                 ? SingleChildScrollView(
-                    physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                    physics: const BouncingScrollPhysics(
+                        parent: AlwaysScrollableScrollPhysics()),
                     child: Column(
                       children: [
                         const SizedBox(
@@ -48,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                               ),
                               Expanded(
                                 child: toCreatePostButton(onPressed: () {
-                                  navigateTo(context, CreatePostScreen());
+                                  navigateTo(context, const CreatePostScreen());
                                 }),
                               ),
                             ],
